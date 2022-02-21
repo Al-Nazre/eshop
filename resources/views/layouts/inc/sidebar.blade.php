@@ -10,19 +10,19 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="dashboard">
+            <a class="nav-link" href="{{url('dashboard')}}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="categories">
+            <a class="nav-link" href="{{url('categories')}}">
               <i class="material-icons">Category</i>
               <p>Categories</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="add-category">
+            <a class="nav-link" href="{{url('add/category')}}">
               <i class="material-icons">Add</i>
               <p>Add Category</p>
             </a>
