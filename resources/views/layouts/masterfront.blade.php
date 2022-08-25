@@ -7,58 +7,29 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    
+    <title>
+        @yield('title')
+    </title>
 
     <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
   <!-- Styles -->
-    <link href="{{asset('admin/css/custom.css')}}" rel="stylesheet">
-    <link href="{{asset('admin/css/material-dashboard.min.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('frontend/css/bootsrap5.css')}}" rel="stylesheet">
  
 </head>
-<body class="">
-  <div class="wrapper">
-
-        @include('layouts.inc.sidebar') 
-
-    <div class="main-panel">
-
-        @include('layouts.inc.adminnav')
+<body>
+  
+        @include('layouts.inc.frontnavbar')
         <div class="content">
-
           @yield('content')
-
         </div>
         
-        @include('layouts.inc.adminfooter')
-
-    </div>
-
-  </div>
-
-    
-   
-
-    
-    
-    
-  </div>
-
-
-  
-
-
-
-
  <!--   Core JS Files   -->
-    <script src="{{ asset('admin/js/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/popper.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/bootstrap-material-design.min.js') }}" defer></script>
-    <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js') }}" defer></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
+  
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if (session('status'))
     <script>
