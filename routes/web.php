@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,18 @@ use App\Http\Controllers\Frontend\FrontendController;
 Auth::routes();
 
 Route::get('/', [FrontendController::class, 'index'] );
+Route::get('/category', [FrontendController::class, 'category'] );
+Route::get('/category/{slug}', [FrontendController::class, 'viewcategory'] );
+Route::get('/category/{cate_slug}/{prod_slug}', [FrontendController::class, 'viewproduct'] );
 
+Route::post('/add-to-cart', 'Frontend\CartController@addProduct')->name('addProduct');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('cart', 'Frontend\CartController@viewCart')->name('cart');
+    Route::post('/update-cart', 'Frontend\CartController@updateCart')->name('updateCart');
+    Route::post('/delete-cart-item', 'Frontend\CartController@removeCartProduct')->name('removeCartProduct');
+
+});
 
 Route::middleware(['auth', 'isAdmin'])->group( function(){
    Route::get('/dashboard', 'Admin\FrontendController@index');

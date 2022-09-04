@@ -11,8 +11,8 @@
           <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li> 
+          <a class="nav-link" href="{{url('/category')}}">Category</a>
+        </li>
         @if (Route::has('login'))
         <li class="nav-item">
           <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -38,7 +38,10 @@
           <a class="nav-link active" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="{{url('/category')}}">Category</a>
+        </li> 
+         <li class="nav-item">
+          <a class="nav-link" href="{{url('/cart')}}">Cart</a>
         </li> 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('logout') }}"
