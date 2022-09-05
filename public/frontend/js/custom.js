@@ -98,6 +98,11 @@ $(document).ready(function () {
             });
         });
 
+        $('.stock-out').click(function (e) { 
+            e.preventDefault();
+            swal("Out of stock!");
+        });
+
         
     });
    

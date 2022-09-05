@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', 'Frontend\CartController@viewCart')->name('cart');
     Route::post('/update-cart', 'Frontend\CartController@updateCart')->name('updateCart');
     Route::post('/delete-cart-item', 'Frontend\CartController@removeCartProduct')->name('removeCartProduct');
+    Route::get('/checkout', 'Frontend\CheckoutController@index')->name('checkoutIndex');
+    Route::post('/place-order', 'Frontend\CheckoutController@placeOrder')->name('placeOrder');
 
 });
 

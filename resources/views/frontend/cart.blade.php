@@ -34,27 +34,49 @@
                     </div>
                     <div class="col-md-3 my-auto">
                          <input type="hidden" value="{{$item->prod_id}}" class="prod-id">
+
+                         @if($item->product->qty > $item->prod_qty)
+
                             <label for="Quantity">Quantity</label>
                             <div class="input-group text-center mb-3">
                                 <button class="input-group-text change-qty decrement-btn">-</button>
                                 <input class="form-control qty-input text-center" type="text" name = "quantity" value="{{$item->prod_qty}}"/>
                                 <button class="input-group-text change-qty increment-btn">+</button>
                             </div>
+                            @php
+                                $total += $item->product->selling_price * $item->prod_qty
+                            @endphp
+
+                            @elseif($item->product->qty == $item->prod_qty)
+
+                            <label for="Quantity">Quantity</label>
+                            <div class="input-group text-center mb-3">
+                                <button class="input-group-text change-qty decrement-btn">-</button>
+                                <input class="form-control qty-input text-center" type="text" name = "quantity" value="{{$item->prod_qty}}"/>
+                                <button class="input-group-text stock-out">+</button>
+                            </div>
+                            @php
+                                $total += $item->product->selling_price * $item->prod_qty
+                            @endphp
+
+                          @else
+
+                          <h6>Out of stock</h6>
+
+                          @endif
                     </div>
                     <div class="col-md-2 my-auto">
                         <button class="btn btn-danger delete-cart-item">remove</button>
                     </div>
                 </div>   
-                @php
-                    $total += $item->product->selling_price * $item->prod_qty
-                @endphp
+                
                 @endforeach
                
             </div> 
                <div class="card-footer">
                     <h6>
                         Total Price: BDT  {{$total}} 
-                     <button class="btn-outline-success btn float-end">Proceed to checkout</button>   
+                     <a href="{{url('/checkout')}}" class="btn-outline-success btn float-end">Proceed to checkout</a>   
                     </h6>
                    
                 </div>
