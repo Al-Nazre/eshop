@@ -65,6 +65,10 @@ class CheckoutController extends Controller
                 //     'price' => $item->product->selling_price,
                 // ];)
 
+        // updating product qty after placing order
+                $product = Product::where('id', $item->prod_id)->first();
+                $product->qty = $product->qty - $item->prod_qty;
+                $product->update();
         }
 
         if(Auth::user()->address1 == NULL)
